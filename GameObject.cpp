@@ -1,10 +1,11 @@
 #include "GameObject.h"
 
+//Private function
 void GameObject::initObject()
 {
 	//Right-Bottom circle
 	this->circle.setRadius(this->window.getView().getSize().x / 4);
-	this->circle.setFillColor(sf::Color::Blue);
+	this->circle.setFillColor(sf::Color(50,50,50));
 	this->circle.setPosition(
 		sf::Vector2f(
 			this->window.getView().getSize().x - circle.getRadius() - circle.getRadius() / 10,
@@ -21,7 +22,7 @@ void GameObject::initObject()
 	));
 }
 
-//Functions
+//Function
 void GameObject::draw() const
 {
 	this->window.draw(circle);

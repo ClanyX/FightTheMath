@@ -20,7 +20,7 @@ private:
 	sf::CircleShape circle;
 	sf::RectangleShape line;
 
-	//Private init
+	//Private function
 	void initObject();
 
 public:
@@ -29,7 +29,7 @@ public:
 		initObject();
 	}
 
-	//Functions
+	//Function
 	void draw() const;
 };
 

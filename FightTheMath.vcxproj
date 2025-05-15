@@ -131,11 +131,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Calculator.cpp" />
     <ClCompile Include="FightTheMath.cpp" />
     <ClCompile Include="GameObject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Calculator.h" />
     <ClInclude Include="GameObject.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\ButtonsEquals.png" />
+    <Image Include="assets\ButtonsN.png" />
+    <Image Include="assets\ButtonsO.png" />
+    <Image Include="assets\Calculator.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

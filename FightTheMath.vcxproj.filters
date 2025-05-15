@@ -21,10 +21,30 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
+    <ClCompile Include="Calculator.cpp">
+      <Filter>Zdrojové soubory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObject.h">
       <Filter>Hlavičkové soubory</Filter>
     </ClInclude>
+    <ClInclude Include="Calculator.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\ButtonsEquals.png">
+      <Filter>Soubory zdrojů</Filter>
+    </Image>
+    <Image Include="assets\ButtonsN.png">
+      <Filter>Soubory zdrojů</Filter>
+    </Image>
+    <Image Include="assets\ButtonsO.png">
+      <Filter>Soubory zdrojů</Filter>
+    </Image>
+    <Image Include="assets\Calculator.png">
+      <Filter>Soubory zdrojů</Filter>
+    </Image>
   </ItemGroup>
 </Project>

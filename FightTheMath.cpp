@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "GameObject.h"
+#include "Calculator.h"
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode({ 1280,720 }), "Fight The Math", sf::Style::Close, sf::State::Windowed);
@@ -14,7 +15,14 @@ int main() {
 		)
 	);
 
+	//Textures
+	sf::Texture calTexture;
+	if (!calTexture.loadFromFile("assets/Calculator.png")) std::cout << "Texture not founf" << std::endl;
+
 	GameObject gameObject(window);
+
+	Calculator calculator(window, calTexture);
+
 
 	while (window.isOpen()) {
 		while (const std::optional event = window.pollEvent())
@@ -25,6 +33,7 @@ int main() {
 
 		window.clear(sf::Color(220, 220, 220));
 		gameObject.draw();
+		calculator.draw();
 		window.display();
 	}
 }

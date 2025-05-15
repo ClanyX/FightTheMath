@@ -1,8 +1,10 @@
 ﻿#include <iostream>
 #include <SFML/Graphics.hpp>
 
+#include "GameObject.h"
+
 int main() {
-	sf::RenderWindow window(sf::VideoMode({ 1280,720 }), "Fight The Math", sf::Style::Close);
+	sf::RenderWindow window(sf::VideoMode({ 1280,720 }), "Fight The Math", sf::Style::Close, sf::State::Windowed);
 	window.setFramerateLimit(60);
 	sf::Vector2u screenResolution = sf::VideoMode::getDesktopMode().size;
 	window.setPosition(
@@ -12,14 +14,17 @@ int main() {
 		)
 	);
 
+	GameObject gameObject(window);
+
 	while (window.isOpen()) {
 		while (const std::optional event = window.pollEvent())
 		{
-			if (event->is < sf::Event::Closed>())
+			if (event->is<sf::Event::Closed>())
 				window.close();
 		}
 
 		window.clear(sf::Color(220, 220, 220));
+		gameObject.draw();
 		window.display();
 	}
 }

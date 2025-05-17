@@ -3,6 +3,12 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+/// <summary>
+/// Calculator class
+/// 
+/// 1. Create calculator sprite
+/// </summary>
+
 class Calculator
 {
 private:

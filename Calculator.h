@@ -3,6 +3,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+#include "Button.h"
+
 /// <summary>
 /// Calculator class
 /// 
@@ -18,18 +20,34 @@ private:
 	//Private variables
 	sf::Sprite calculator;
 
+	sf::Font& font;
+	sf::Texture& btnTextureN;
+	sf::Texture& btnTextureO;
+	sf::Texture& btnEquals;
+
 	//Private function
-	void initVariables();
 	void initCalculator();
+	void initButtons();
 
 public:
 	//Construktor
-	Calculator(sf::RenderWindow& window, const sf::Texture& texture) : window(window),calculator(texture) {
-		initVariables();
+	Calculator(
+		sf::RenderWindow& window,
+		const sf::Texture& texture,
+		sf::Font& font,
+		sf::Texture& btnN,
+		sf::Texture& btnO,
+		sf::Texture& btnE
+	) : window(window),calculator(texture),font(font), btnTextureN(btnN), btnTextureO(btnO), btnEquals(btnE) {
+
+
 		initCalculator();
+		initButtons();
 	}
 
 	//Function
 	void draw() const;
+
+	void updateEvent() const;
 };
 

@@ -19,9 +19,20 @@ int main() {
 	sf::Texture calTexture;
 	if (!calTexture.loadFromFile("assets/Calculator.png")) std::cout << "Texture not found (calculator)" << std::endl;
 
+	sf::Texture btnTextureN;
+	sf::Texture btnTextureO;
+	sf::Texture btnEquals;
+	if (!btnTextureN.loadFromFile("assets/ButtonsN.png")) std::cout << "Texture not found (buttons N)" << std::endl;
+	if (!btnTextureN.loadFromFile("assets/ButtonsO.png")) std::cout << "Texture not found (buttons O)" << std::endl;
+	if (!btnTextureN.loadFromFile("assets/ButtonsEquals.png")) std::cout << "Texture not found (buttons equals)" << std::endl;
+
+	//Font
+	sf::Font font;
+	if (!font.openFromFile("assets / Roboto.ttf")) std::cout << "Font not found" << std::endl;
+
 	GameObject gameObject(window);
 
-	Calculator calculator(window, calTexture);
+	Calculator calculator(window, calTexture, font, btnTextureN, btnTextureO, btnEquals);
 
 
 	while (window.isOpen()) {
@@ -29,6 +40,8 @@ int main() {
 		{
 			if (event->is<sf::Event::Closed>())
 				window.close();
+
+			calculator.updateEvent();
 		}
 
 		window.clear(sf::Color(220, 220, 220));

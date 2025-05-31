@@ -1,6 +1,18 @@
 #include "Calculator.h"
 
 //Private function
+void Calculator::initVariables()
+{
+	sf::Texture btnTextureN;
+	if (!btnTextureN.loadFromFile("assets/ButtonsN.png")) std::cout << "Texture not found (buttons N)" << std::endl;
+
+	sf::Texture btnTextureO;
+	if (!btnTextureN.loadFromFile("assets/ButtonsO.png")) std::cout << "Texture not found (buttons O)" << std::endl;
+
+	sf::Texture btnEquals;
+	if (!btnTextureN.loadFromFile("assets/ButtonsEquals.png")) std::cout << "Texture not found (buttons equals)" << std::endl;
+}
+
 void Calculator::initCalculator()
 {
 	this->calculator.setScale(

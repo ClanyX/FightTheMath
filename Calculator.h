@@ -19,10 +19,13 @@ private:
 	sf::Sprite calculator;
 
 	//Private function
+	void initVariables();
 	void initCalculator();
+
 public:
 	//Construktor
 	Calculator(sf::RenderWindow& window, const sf::Texture& texture) : window(window),calculator(texture) {
+		initVariables();
 		initCalculator();
 	}
 

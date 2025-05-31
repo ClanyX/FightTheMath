@@ -17,7 +17,7 @@ int main() {
 
 	//Textures
 	sf::Texture calTexture;
-	if (!calTexture.loadFromFile("assets/Calculator.png")) std::cout << "Texture not founf" << std::endl;
+	if (!calTexture.loadFromFile("assets/Calculator.png")) std::cout << "Texture not found (calculator)" << std::endl;
 
 	GameObject gameObject(window);
 

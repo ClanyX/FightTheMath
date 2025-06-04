@@ -25,9 +25,10 @@ private:
 	sf::Texture& btnTextureO;
 	sf::Texture& btnEquals;
 
+	Button* btn1;
+
 	//Private function
 	void initCalculator();
-	void initButtons();
 
 public:
 	//Construktor
@@ -40,14 +41,11 @@ public:
 		sf::Texture& btnE
 	) : window(window),calculator(texture),font(font), btnTextureN(btnN), btnTextureO(btnO), btnEquals(btnE) {
 
-
 		initCalculator();
-		initButtons();
+		btn1 = new Button(btnTextureN, font, "5");
 	}
 
 	//Function
 	void draw() const;
-
-	void updateEvent() const;
 };
 

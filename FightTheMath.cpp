@@ -28,7 +28,7 @@ int main() {
 
 	//Font
 	sf::Font font;
-	if (!font.openFromFile("assets / Roboto.ttf")) std::cout << "Font not found" << std::endl;
+	if (!font.openFromFile("assets/Roboto.ttf")) std::cout << "Font not found" << std::endl;
 
 	GameObject gameObject(window);
 
@@ -41,7 +41,6 @@ int main() {
 			if (event->is<sf::Event::Closed>())
 				window.close();
 
-			calculator.updateEvent();
 		}
 
 		window.clear(sf::Color(220, 220, 220));

@@ -10,23 +10,26 @@
 class Button
 {
 private:
-	//Windows object
-	sf::RenderWindow& window;
-
-	//Private variables
-	sf::RectangleShape button;
+	// Private variables
+	sf::RectangleShape button{ sf::Vector2f(55.f, 55.f) };
 	sf::Text text;
 
-	//Private functions
+	// Private functions
 	void initButton(std::string label);
 
 public:
 	//Constructor
-	Button(sf::RenderWindow& window, const sf::Texture& btntexture, const sf::Font& font, const std::string& label) : window(window), text(font) {
+	Button(
+		const sf::Texture& btntexture,
+		const sf::Font& font,
+		const std::string& label
+	) : text(font)
+	{
+		button.setTexture(&btntexture);
 		initButton(label);
 	}
-
+	
 	//Functions
-	void drawBtn() const;
+	void drawBtn(sf::RenderWindow& window) const;
 };
 

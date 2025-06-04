@@ -1,5 +1,4 @@
 #include "Calculator.h"
-#include "Button.h"
 
 //Private function
 void Calculator::initCalculator()
@@ -16,18 +15,9 @@ void Calculator::initCalculator()
 	this->calculator.setPosition({ static_cast<float>(size.x) / 4, static_cast<float>(size.y) / 2 });
 }
 
-void Calculator::initButtons()
-{
-	Button btn1(window, btnTextureN, font, "5");
-	btn1.drawBtn();
-}
-
 //Function
 void Calculator::draw() const
 {
 	this->window.draw(calculator);
-}
-
-void Calculator::updateEvent() const
-{
+	this->btn1->drawBtn(window);
 }

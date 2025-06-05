@@ -15,9 +15,17 @@ void Calculator::initCalculator()
 	this->calculator.setPosition({ static_cast<float>(size.x) / 4, static_cast<float>(size.y) / 2 });
 }
 
+void Calculator::initButtons()
+{
+	btn1 = new Button(font, sf::Vector2f(55.f, 55.f), sf::Vector2f(30.f, 50.f), "4", btnTextureO);
+	btn2 = new Button(font, sf::Vector2f(55.f, 55.f), sf::Vector2f(300.f, 50.f), "+", btnTextureN);
+	//this->buttons[0] = Button(btnTextureN, font, "5");
+}
+
 //Function
 void Calculator::draw() const
 {
 	this->window.draw(calculator);
 	this->btn1->drawBtn(window);
+	this->btn2->drawBtn(window);
 }

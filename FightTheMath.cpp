@@ -19,20 +19,13 @@ int main() {
 	sf::Texture calTexture;
 	if (!calTexture.loadFromFile("assets/Calculator.png")) std::cout << "Texture not found (calculator)" << std::endl;
 
-	sf::Texture btnTextureN;
-	sf::Texture btnTextureO;
-	sf::Texture btnEquals;
-	if (!btnTextureN.loadFromFile("assets/ButtonsN.png")) std::cout << "Texture not found (buttons N)" << std::endl;
-	if (!btnTextureN.loadFromFile("assets/ButtonsO.png")) std::cout << "Texture not found (buttons O)" << std::endl;
-	if (!btnTextureN.loadFromFile("assets/ButtonsEquals.png")) std::cout << "Texture not found (buttons equals)" << std::endl;
-
 	//Font
 	sf::Font font;
 	if (!font.openFromFile("assets/Roboto.ttf")) std::cout << "Font not found" << std::endl;
 
 	GameObject gameObject(window);
 
-	Calculator calculator(window, calTexture, font, btnTextureN, btnTextureO, btnEquals);
+	Calculator calculator(window, calTexture, font);
 
 
 	while (window.isOpen()) {

@@ -3,9 +3,6 @@
 //Private functions
 void Button::initButton(std::string label)
 {
-	//this->button.setFillColor(sf::Color::Green);
-	this->button.setPosition({ 10.f,10.f });
-	
 	this->text.setString(label);
 	this->text.setCharacterSize(35.f);
 	this->text.setStyle(sf::Text::Bold);

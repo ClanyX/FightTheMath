@@ -30,3 +30,8 @@ void Button::drawBtn(sf::RenderWindow& window) const
 	window.draw(button);
 	window.draw(text);
 }
+
+bool Button::isClicked(sf::Vector2f& mousePos)
+{
+	return button.getGlobalBounds().contains(mousePos);
+}

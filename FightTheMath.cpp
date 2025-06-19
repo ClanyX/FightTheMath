@@ -34,6 +34,12 @@ int main() {
 			if (event->is<sf::Event::Closed>())
 				window.close();
 
+			if (const auto* mouseButtonPressed = event->getIf<sf::Event::MouseButtonPressed>()) {
+				if (mouseButtonPressed->button == sf::Mouse::Button::Left) {
+					sf::Vector2f mousePos = window.mapPixelToCoords({ mouseButtonPressed->position.x, mouseButtonPressed->position.y });
+					calculator.clickCheck(mousePos);
+				}
+			}
 		}
 
 		window.clear(sf::Color(220, 220, 220));

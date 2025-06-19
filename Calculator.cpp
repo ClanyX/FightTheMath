@@ -29,3 +29,14 @@ void Calculator::draw() const
 	this->btn1->drawBtn(window);
 	this->btn2->drawBtn(window);
 }
+
+void Calculator::clickCheck(sf::Vector2f& mousePos) const
+{
+	//need to add array research for clicked button
+	if (this->btn1->isClicked(mousePos)) {
+		std::cout << "Clicked" << std::endl;
+	}
+	if (this->btn2->isClicked(mousePos)) {
+		std::cout << "Clicked btn2" << std::endl;
+	}
+}

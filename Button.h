@@ -37,5 +37,7 @@ public:
 	
 	//Functions
 	void drawBtn(sf::RenderWindow& window) const;
+
+	bool isClicked(sf::Vector2f& mousePos);
 };
 

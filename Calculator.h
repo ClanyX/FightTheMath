@@ -51,4 +51,6 @@ public:
 
 	//Function
 	void draw() const;
+
+	void clickCheck(sf::Vector2f& mousePos) const;
 };

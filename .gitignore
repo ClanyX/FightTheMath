@@ -50,6 +50,7 @@ _deps
 
 ### CMake Patch ###
 CMakeUserPresets.json
+SFML/
 
 # External projects
 *-prefix/

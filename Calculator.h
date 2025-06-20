@@ -26,9 +26,7 @@ private:
 	sf::Texture btnEquals;
 
 	//Buttons
-	Button* btn1;
-	Button* btn2;
-	//Button buttons[14];
+	Button* buttons[14];
 
 	//Private function
 	void initCalculator();

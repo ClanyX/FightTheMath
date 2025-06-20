@@ -3,6 +3,8 @@
 //Private functions
 void Button::initButton(std::string label)
 {
+	this->btnLabel = label;
+
 	this->text.setString(label);
 	this->text.setCharacterSize(35.f);
 	this->text.setStyle(sf::Text::Bold);
@@ -25,13 +27,27 @@ void Button::initButton(std::string label)
 }
 
 //Functions
-void Button::drawBtn(sf::RenderWindow& window) const
+void Button::drawBtn(sf::RenderWindow& window)
 {
-	window.draw(button);
-	window.draw(text);
+	window.draw(this->button);
+	window.draw(this->text);
 }
 
 bool Button::isClicked(sf::Vector2f& mousePos)
 {
-	return button.getGlobalBounds().contains(mousePos);
+	if (this->button.getGlobalBounds().contains(mousePos)) {
+		return true;
+	}
+	return false;
+}
+
+void Button::setPosition(sf::Vector2f position)
+{
+	this->button.setPosition(position);
+	initButton(label());
+}
+
+std::string Button::label() const
+{
+	return btnLabel;
 }

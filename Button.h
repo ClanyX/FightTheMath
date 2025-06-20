@@ -15,6 +15,7 @@ private:
 	// Private variables
 	sf::RectangleShape button;
 	sf::Text text;
+	std::string btnLabel;
 
 	// Private functions
 	void initButton(std::string label);
@@ -36,8 +37,12 @@ public:
 	}
 	
 	//Functions
-	void drawBtn(sf::RenderWindow& window) const;
+	void drawBtn(sf::RenderWindow& window);
 
 	bool isClicked(sf::Vector2f& mousePos);
+
+	void setPosition(sf::Vector2f position);
+
+	std::string label() const;
 };
 

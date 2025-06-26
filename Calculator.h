@@ -28,6 +28,9 @@ private:
 	//Buttons
 	Button* buttons[14];
 
+	//Operators
+	std::string operators[3] = {"","",""};
+
 	//Private function
 	void initCalculator();
 	void initButtons();
@@ -50,5 +53,10 @@ public:
 	//Function
 	void draw() const;
 
-	void clickCheck(sf::Vector2f& mousePos) const;
+	void clickCheck(sf::Vector2f& mousePos);
+
+	//Operators
+	void setOperator(std::string label, std::uint8_t index);
+
+	std::string getOperator(std::uint8_t index);
 };

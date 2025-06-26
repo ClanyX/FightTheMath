@@ -1,5 +1,7 @@
 #include "Calculator.h"
 
+#include <typeinfo>
+
 //Private function
 void Calculator::initCalculator()
 {
@@ -57,18 +59,30 @@ void Calculator::initButtons()
 void Calculator::draw() const
 {
 	this->window.draw(calculator);
-	for (size_t i = 0; i < 15; i++)
+	for (int8_t i = 0; i < 15; i++)
 	{
 		buttons[i]->drawBtn(window);
 	}
 }
 
-void Calculator::clickCheck(sf::Vector2f& mousePos) const
+void Calculator::clickCheck(sf::Vector2f& mousePos)
 {
-	for (size_t i = 0; i < 15; i++)
+	for (int8_t i = 0; i < 15; i++)
 	{
 		if (buttons[i]->isClicked(mousePos)) {
-			std::cout << buttons[i]->label() << std::endl;
+			//implement: check for operators or numbers
+			setOperator("ahoj", 1);
+			std::cout << getOperator(1) << std::endl;
 		}
 	}
+}
+
+void Calculator::setOperator(std::string label, std::uint8_t index)
+{
+	operators[index] += label;
+}
+
+std::string Calculator::getOperator(std::uint8_t index)
+{
+	return operators[index];
 }

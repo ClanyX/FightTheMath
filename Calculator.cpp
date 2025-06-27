@@ -1,6 +1,6 @@
 #include "Calculator.h"
 
-#include <typeinfo>
+#include <string>
 
 //Private function
 void Calculator::initCalculator()
@@ -15,6 +15,10 @@ void Calculator::initCalculator()
 	this->calculator.setOrigin({ bounds.size.x / 2, bounds.size.y / 2 });
 	auto size = window.getSize();
 	this->calculator.setPosition({ static_cast<float>(size.x) / 4, static_cast<float>(size.y) / 2 });
+}
+
+bool isOperator(char ch) {
+	return (ch == '+' || ch == '-' || ch == '*' || ch == '/');
 }
 
 void Calculator::initButtons()
@@ -70,9 +74,21 @@ void Calculator::clickCheck(sf::Vector2f& mousePos)
 	for (int8_t i = 0; i < 15; i++)
 	{
 		if (buttons[i]->isClicked(mousePos)) {
-			//implement: check for operators or numbers
-			setOperator("ahoj", 1);
-			std::cout << getOperator(1) << std::endl;
+			//in gemini is better solution
+			std::cout << getOperator(0) << std::endl << getOperator(1) << std::endl << getOperator(2) << std::endl;
+			if (operators[0].length() < 5 || !isOperator(this->buttons[i]->label().at(0)) && !isFirstFull) {
+				setOperator(this->buttons[i]->label(), 0);
+				return;
+			}
+			if (isOperator(this->buttons[i]->label().at(0))) {
+				setOperator(this->buttons[i]->label(), 1);
+				isFirstFull = true;
+				return;
+			}
+			if (operators[2].length() < 5 || !isOperator(this->buttons[i]->label().at(0)) && isFirstFull) {
+				setOperator(this->buttons[i]->label(), 2);
+				return;
+			}
 		}
 	}
 }

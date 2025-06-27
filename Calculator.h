@@ -20,6 +20,8 @@ private:
 	//Private variables
 	sf::Sprite calculator;
 
+	bool isFirstFull = false;
+
 	sf::Font& font;
 	sf::Texture btnTextureN;
 	sf::Texture btnTextureO;

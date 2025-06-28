@@ -1,6 +1,7 @@
 #include "Calculator.h"
 
 #include <string>
+#include <cctype>
 
 //Private function
 void Calculator::initCalculator()
@@ -17,6 +18,9 @@ void Calculator::initCalculator()
 	this->calculator.setPosition({ static_cast<float>(size.x) / 4, static_cast<float>(size.y) / 2 });
 }
 
+bool isDigit(char ch) {
+	return (ch >= '0' && ch <= '9');
+}
 bool isOperator(char ch) {
 	return (ch == '+' || ch == '-' || ch == '*' || ch == '/');
 }
@@ -59,6 +63,37 @@ void Calculator::initButtons()
 	}
 }
 
+void Calculator::performCalculation()
+{
+	int result = 0;
+	std::cout << "Provádím výpoèet: " << firstNumber << " " << currentOperand << " " << secondNumber << " = ";
+
+	switch (currentOperand) {
+	case '+':
+		result = firstNumber + secondNumber;
+		break;
+	case '-':
+		result = firstNumber - secondNumber;
+		break;
+	case '*':
+		result = firstNumber * secondNumber;
+		break;
+	case '/':
+		if (secondNumber != 0) {
+			result = firstNumber / secondNumber;
+		}
+		else {
+			//remove commnent
+			std::cout << "Chyba: Dìlení nulou!" << std::endl;
+		}
+		break;
+	default:
+		break;
+	}	
+	std::cout << result << std::endl;
+	firstNumber = result;
+}
+
 //Function
 void Calculator::draw() const
 {
@@ -74,31 +109,89 @@ void Calculator::clickCheck(sf::Vector2f& mousePos)
 	for (int8_t i = 0; i < 15; i++)
 	{
 		if (buttons[i]->isClicked(mousePos)) {
-			//in gemini is better solution
-			std::cout << getOperator(0) << std::endl << getOperator(1) << std::endl << getOperator(2) << std::endl;
-			if (operators[0].length() < 5 || !isOperator(this->buttons[i]->label().at(0)) && !isFirstFull) {
-				setOperator(this->buttons[i]->label(), 0);
-				return;
-			}
-			if (isOperator(this->buttons[i]->label().at(0))) {
-				setOperator(this->buttons[i]->label(), 1);
-				isFirstFull = true;
-				return;
-			}
-			if (operators[2].length() < 5 || !isOperator(this->buttons[i]->label().at(0)) && isFirstFull) {
-				setOperator(this->buttons[i]->label(), 2);
-				return;
-			}
+			proccesChar(this->buttons[i]->label().at(0));
 		}
 	}
 }
 
-void Calculator::setOperator(std::string label, std::uint8_t index)
+void Calculator::proccesChar(char ch)
 {
-	operators[index] += label;
+	switch (state) {
+	case INPUT_FIRST_NUMBER:
+		if (isDigit(ch)) {
+			currentString += ch;
+		}
+		else if (isOperator(ch)) {
+			if (currentString.empty()) {
+				resetOperation();
+				return;
+			}
+			firstNumber = std::stoi(currentString);
+			currentOperand = ch;
+			currentString.clear();
+			state = OPERAND_ENTERED;
+		}
+		else if (ch == '=') {
+			if (currentString.empty()) {
+				resetOperation();
+				return;
+			}
+			resetOperation();
+		}
+		break;
+
+	case OPERAND_ENTERED:
+		if (isDigit(ch)) {
+			currentString += ch;
+			state = INPUT_SECOND_NUMBER;
+		}
+		else if (isOperator(ch)) {
+			currentOperand = ch;
+		}
+		else if (ch == '=') {
+			resetOperation();
+		}
+		break;
+
+	case INPUT_SECOND_NUMBER:
+		if (isDigit(ch)) {
+			currentString += ch;
+		}
+		else if (ch == '=') {
+			if (currentString.empty()) {
+				resetOperation();
+				return;
+			}
+			secondNumber = std::stoi(currentString);
+			performCalculation();
+			state = RESULT_DISPLAY;
+			resetOperation();
+		}
+		else if (isOperator(ch)) {
+			if (currentString.empty()) {
+				resetOperation();
+				return;
+			}
+			secondNumber = std::stoi(currentString);
+			performCalculation();
+			currentOperand = ch;
+			currentString.clear();
+			state = OPERAND_ENTERED;
+		}
+		break;
+
+	case RESULT_DISPLAY:
+		resetOperation();
+		proccesChar(ch);
+		break;
+	}
 }
 
-std::string Calculator::getOperator(std::uint8_t index)
+void Calculator::resetOperation()
 {
-	return operators[index];
+	state = INPUT_FIRST_NUMBER;
+	currentString.clear();
+	firstNumber = 0;
+	secondNumber = 0;
+	currentOperand = '\0';
 }

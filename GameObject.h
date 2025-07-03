@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <random>
+#include <string>
 
 /// <summary>
 /// Game Object class
@@ -24,12 +26,26 @@ private:
 	void initObject();
 
 public:
+	sf::Text currentNumber;
+	sf::Text finalNumber;
+
 	//Construktor
-    GameObject(sf::RenderWindow& window) : window(window) {
+    GameObject(sf::RenderWindow& window, const sf::Font& font) : window(window), currentNumber(font), finalNumber(font) {
+		currentNumber.setFont(font);
+		finalNumber.setFont(font);
 		initObject();
 	}
 
 	//Function
 	void draw() const;
+
+	//strings
+	void regenerateNumber();
+
+	int getCurrentNumber();
+	void setCurrentNumber(int label);
+
+	int getFinalNumber();
+	void setFinalNumber(int label);
 };
 

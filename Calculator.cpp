@@ -66,7 +66,7 @@ void Calculator::initButtons()
 void Calculator::performCalculation()
 {
 	int result = 0;
-	std::cout << "Provádím výpoèet: " << firstNumber << " " << currentOperand << " " << secondNumber << " = ";
+	std::cout << "Number: " << firstNumber << " " << currentOperand << " " << secondNumber << " = ";
 
 	switch (currentOperand) {
 	case '+':
@@ -83,15 +83,14 @@ void Calculator::performCalculation()
 			result = firstNumber / secondNumber;
 		}
 		else {
-			//remove commnent
-			std::cout << "Chyba: Dìlení nulou!" << std::endl;
+			result = firstNumber;
 		}
 		break;
 	default:
 		break;
 	}	
+	gameObject.setCurrentNumber(result);
 	std::cout << result << std::endl;
-	firstNumber = result;
 }
 
 //Function
@@ -116,40 +115,12 @@ void Calculator::clickCheck(sf::Vector2f& mousePos)
 
 void Calculator::proccesChar(char ch)
 {
+	firstNumber = gameObject.getCurrentNumber();
 	switch (state) {
-	case INPUT_FIRST_NUMBER:
-		if (isDigit(ch)) {
-			currentString += ch;
-		}
-		else if (isOperator(ch)) {
-			if (currentString.empty()) {
-				resetOperation();
-				return;
-			}
-			firstNumber = std::stoi(currentString);
-			currentOperand = ch;
-			currentString.clear();
-			state = OPERAND_ENTERED;
-		}
-		else if (ch == '=') {
-			if (currentString.empty()) {
-				resetOperation();
-				return;
-			}
-			resetOperation();
-		}
-		break;
-
 	case OPERAND_ENTERED:
-		if (isDigit(ch)) {
-			currentString += ch;
-			state = INPUT_SECOND_NUMBER;
-		}
-		else if (isOperator(ch)) {
+		if (isOperator(ch)) {
 			currentOperand = ch;
-		}
-		else if (ch == '=') {
-			resetOperation();
+			state = INPUT_SECOND_NUMBER;
 		}
 		break;
 
@@ -189,7 +160,7 @@ void Calculator::proccesChar(char ch)
 
 void Calculator::resetOperation()
 {
-	state = INPUT_FIRST_NUMBER;
+	state = OPERAND_ENTERED;
 	currentString.clear();
 	firstNumber = 0;
 	secondNumber = 0;

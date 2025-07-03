@@ -23,9 +23,10 @@ int main() {
 	sf::Font font;
 	if (!font.openFromFile("assets/Roboto.ttf")) std::cout << "Font not found" << std::endl;
 
-	GameObject gameObject(window);
+	GameObject gameObject(window, font);
+	gameObject.regenerateNumber();
 
-	Calculator calculator(window, calTexture, font);
+	Calculator calculator(window, calTexture, font, gameObject);
 
 
 	while (window.isOpen()) {
@@ -40,6 +41,11 @@ int main() {
 					calculator.clickCheck(mousePos);
 				}
 			}
+		}
+
+		if (gameObject.getFinalNumber() == gameObject.getCurrentNumber()) {
+			//reset game
+			gameObject.regenerateNumber();
 		}
 
 		window.clear(sf::Color(220, 220, 220));

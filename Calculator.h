@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Button.h"
+#include "GameObject.h"
 
 /// <summary>
 /// Calculator class
@@ -19,18 +20,18 @@ private:
 
 	//Private variables
 	sf::Sprite calculator;
+	GameObject& gameObject;
 
 	//States
 	enum CalculatorState {
-		INPUT_FIRST_NUMBER,
 		OPERAND_ENTERED,
 		INPUT_SECOND_NUMBER,
 		RESULT_DISPLAY
 	};
 
 	CalculatorState state;
-	int firstNumber = 0;
-	int secondNumber = 0;
+	int firstNumber;
+	int secondNumber;
 	char currentOperand = '\0';
 	std::string currentString;
 
@@ -52,8 +53,9 @@ public:
 	Calculator(
 		sf::RenderWindow& window,
 		const sf::Texture& texture,
-		sf::Font& font
-	) : window(window), calculator(texture), font(font), state(INPUT_FIRST_NUMBER)
+		sf::Font& font,
+		GameObject& go
+	) : window(window), calculator(texture), font(font), state(OPERAND_ENTERED), gameObject(go)
 	{
 		if (!btnTextureN.loadFromFile("assets/ButtonsN.png")) std::cout << "Texture not found (buttons N)" << std::endl;
 		if (!btnTextureO.loadFromFile("assets/ButtonsO.png")) std::cout << "Texture not found (buttons O)" << std::endl;

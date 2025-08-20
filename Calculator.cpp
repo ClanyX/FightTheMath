@@ -47,7 +47,7 @@ void Calculator::initButtons()
 	buttons[10] = new Button(font, itemSize, sf::Vector2f(300.f, 50.f), "8", btnTextureN);
 	buttons[11] = new Button(font, itemSize, sf::Vector2f(300.f, 50.f), "9", btnTextureN);
 	buttons[12] = new Button(font, itemSize, sf::Vector2f(300.f, 50.f), "*", btnTextureO);
-	buttons[13] = new Button(font, itemSize, sf::Vector2f(300.f, 50.f), "0", btnEquals);
+	buttons[13] = new Button(font, itemSize, sf::Vector2f(300.f, 50.f), "0", btnTextureN);
 	buttons[14] = new Button(font, sf::Vector2f(110.f + spacing.x,55.f), sf::Vector2f(300.f, 50.f), "=", btnTextureO);
 
 	for (size_t i = 0; i < 15; i++)

@@ -135,11 +135,13 @@
     <ClCompile Include="Calculator.cpp" />
     <ClCompile Include="FightTheMath.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="MessageBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="Calculator.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="MessageBox.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\ButtonsEquals.png" />

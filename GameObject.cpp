@@ -28,7 +28,7 @@ void GameObject::initObject()
 	this->currentNumber.setFillColor(sf::Color::White);
 	this->currentNumber.setPosition(
 		sf::Vector2f(
-			window.getSize().x - 170,
+			window.getSize().x - 200,
 			430.f
 		)
 	);
@@ -40,7 +40,7 @@ void GameObject::initObject()
 	this->finalNumber.setFillColor(sf::Color::White);
 	this->finalNumber.setPosition(
 		sf::Vector2f(
-			window.getSize().x - 170,
+			window.getSize().x - 200,
 			575.f
 		)
 	);

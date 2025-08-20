@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 #include "Calculator.h"
+#include "MessageBox.h"
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode({ 1280,720 }), "Fight The Math", sf::Style::Close, sf::State::Windowed);
@@ -28,7 +29,6 @@ int main() {
 
 	Calculator calculator(window, calTexture, font, gameObject);
 
-
 	while (window.isOpen()) {
 		while (const std::optional event = window.pollEvent())
 		{
@@ -46,6 +46,7 @@ int main() {
 		if (gameObject.getFinalNumber() == gameObject.getCurrentNumber()) {
 			//reset game
 			gameObject.regenerateNumber();
+			MessageBox("Correct Answer");
 		}
 
 		window.clear(sf::Color(220, 220, 220));
